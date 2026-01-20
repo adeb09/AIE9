@@ -221,7 +221,7 @@ Now test your assistant with personal questions it should be able to help with. 
 
 
 3. Prompt: "Help me plan a birthday surprise for my sister."
-**Result:**
+- **Result:**
 - the responses for this prompt were the most interesting to me because it was much clearer where the issues with this LLM are
 - a lot of the birthday suggestions given by the LLM were romantic in nature, but I was clear from the beginning that I wanted to surprise my **sister** not a significant other,so the romantic birthday plans didn't make sense in this context
 - the next problem I run into is the fact that the LLM forgets I want a restaurant suggestion in Kips Bay or Bryant Park, or somewhere in between; it hallucinates and suggestions places to live near those areas **(probably the biggest obvious error thus far)**
@@ -262,7 +262,9 @@ Now test your assistant with personal questions it should be able to help with. 
 
 Are the vibes of this assistant's answers aligned with your vibes? Why or why not?
 ##### ✅ Answer:
+
 I think the vibes were aligned for the most part. Whenever I think of an AI speaking to me, I think of Jarvis in Iron Man. I want the tone for the most to be neutral and friendly but not overly friendly. I don't expect the LLM to necessarily be my friend but more like a helper (like Jarvis or Clippy in Microsoft Word) but that's just *my vibe*.
+
 ---
 
 #### 🏗️ Activity #3: Personal Vibe Checking Evals (Requires Additional Capabilities)
