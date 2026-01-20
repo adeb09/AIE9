@@ -169,9 +169,12 @@ Now test your assistant with personal questions it should be able to help with. 
 ![1/14](./images/2/1_14.png)
 
 2. Prompt: "What are the pros and cons of working at a MAANG company versus an early stage AI startup as the next step in my career?"
-- this was 
--
 **Result:**
+- this question/variations of this question have been asked a lot by people in tech
+- I was curious how the LLM would state the pros and cons for each
+- I actually end up going down the rabbit-hole allowing the LLM to help me weigh out each factor for my hypothetical next step in my career
+- I get to a point where the LLM is suggesting projects that I could work on to show competency in the areas of fintech that I am interested in; but for some reason, it is obvious that the LLM sort of forgets what I said in the prior message; I have to mention things again in the current context or else the LLM forgets what I had said before. 
+- If I'm not very specific with my language, it can end up giving generic responses and not really answer the question that I actually meant; for example, at the very end, I asked it data sets I could use for the aforementioned projects the LLM had listed off to me before, but then it asks me again what projects I had in mind even though it's clear I was referring to the projects the LLM had just listed prior
 ![2/1](./images/2/2_1.png)
 ![2/2](./images/2/2_2.png)
 ![2/3](./images/2/2_3.png)
@@ -217,8 +220,12 @@ Now test your assistant with personal questions it should be able to help with. 
 ![2/6](./images/2/2_43.png)
 
 
-2. Prompt: "Help me plan a birthday surprise for my sister."
+3. Prompt: "Help me plan a birthday surprise for my sister."
 **Result:**
+- the responses for this prompt were the most interesting to me because it was much clearer where the issues with this LLM are
+- a lot of the birthday suggestions given by the LLM were romantic in nature, but I was clear from the beginning that I wanted to surprise my **sister** not a significant other,so the romantic birthday plans didn't make sense in this context
+- the next problem I run into is the fact that the LLM forgets I want a restaurant suggestion in Kips Bay or Bryant Park, or somewhere in between; it hallucinates and suggestions places to live near those areas **(probably the biggest obvious error thus far)**
+- once I clarify that I wanted restaurant suggestions, the LLM already forgot which locations in NYC I was referring even though it was in the last message I had sent; eventually I am able to get it to suggestions restaurants in Kips Bay but it takes a lot of work; the model kept losing contenxt/information is already had
 ![3/1](./images/2/3_1.png)
 ![3/2](./images/2/3_2.png)
 ![3/3](./images/2/3_3.png)
@@ -255,7 +262,7 @@ Now test your assistant with personal questions it should be able to help with. 
 
 Are the vibes of this assistant's answers aligned with your vibes? Why or why not?
 ##### ✅ Answer:
-
+I think the vibes were aligned for the most part. Whenever I think of an AI speaking to me, I think of Jarvis in Iron Man. I want the tone for the most to be neutral and friendly but not overly friendly. I don't expect the LLM to necessarily be my friend but more like a helper (like Jarvis or Clippy in Microsoft Word) but that's just *my vibe*.
 ---
 
 #### 🏗️ Activity #3: Personal Vibe Checking Evals (Requires Additional Capabilities)
@@ -266,16 +273,26 @@ Now test your assistant with questions that would require capabilities beyond ba
 - "What time should I leave for the airport?"
 
 ##### Your Prompts and Results:
-1. Prompt:
+1. Prompt: "What does my schedule look like tomorrow?"
    - Result:
-2. Prompt:
+![3/1](./images/3/1.png)
+![3/2](./images/3/2.png)
+     
+2. Prompt: "Do you know what the FUBO stock price was at the end of the last day of trading?"
    - Result:
+![3/1](./images/3/3.png)
+![3/2](./images/3/4.png)
 
 #### ❓Question #3:
 
 What are some limitations of your application?
 ##### ✅ Answer:
-
+- it doesn't have access to real-time data or live updates
+- it's not really connected to the internet so most of its knowledge is based on when the LLM itself was trained
+- it has trouble keeping context (sometimes it forgets key pieces of information you have mentioned before)
+  - for example: it kept forgetting that I wanted suggestions for restaurants in Kips Bay or Bryant Park, not suggestions on where to live in those neighborhoods)
+  - it suggested a lot of romantic birthday plans even though I said I was planning a surprise for my **sister**
+  - I have a hypothesis that the context issues may have to do with the fact that I'm using GPT-4.1 Mini (I'm assuming the mini models are good at giving quick, generic information but aren't as good as the bigger models which are usually the default when you are using ChatGPT directly because I have noticed those models are great at keeping content have having a memory of things you mentioned in your chat history)
 ---
 
 This "vibe check" now serves as a baseline, of sorts, to help understand what holes your application has.
