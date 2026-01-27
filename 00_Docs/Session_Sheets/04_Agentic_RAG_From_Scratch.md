@@ -8,8 +8,8 @@
 - Understand how to use and locally host the newest open-source LLM and embedding models
 
 🧰 **New Tools**
-- Orchestration: [LangGraph](https://docs.langchain.com/oss/python/langgraph/overview)
-- Inference & Serving: [ollama](https://ollama.com/)
+Orchestration: [LangGraph](https://docs.langchain.com/oss/python/langgraph/overview)
+Inference & Serving: [ollama](https://ollama.com/)
 
 ## 📛 Required Tooling & Account Setup
 - Download and create an [ollama](https://ollama.com/) account
@@ -47,6 +47,14 @@ Just as every component of a chain is a runnable, each node in our graph can be 
 
 Welcome to the next layer of abstraction.
 
+## Going Deeper
+
+Why did the LangChain team develop LangGraph?
+
+<img width="729" height="459" alt="image" src="https://github.com/user-attachments/assets/544cac48-4f6f-4ddb-bc7b-251247d22b94" />
+ 
+Read more here: [Building LangGraph: Designing an Agent Runtime from first principles](https://www.blog.langchain.com/building-langgraph/)  
+
 <hr>
 
-Do you have any questions about how to best prepare for Session 1 after reading? Please don't hesitate to provide direct feedback to `greg@aimakerspace.io` or `Dr Greg` on Discord!
+Do you have any questions about how to best prepare for Session 4 after reading? Please don't hesitate to provide direct feedback to `greg@aimakerspace.io` or `Dr Greg` on Discord!
