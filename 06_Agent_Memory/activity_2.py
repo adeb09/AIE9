@@ -313,7 +313,7 @@ print(f"Alberto: {q1}")
 print(f"Wellness Agent: {response1['messages'][-1].content}")
 
 
-response1 = act2_graph.invoke(
+response2 = act2_graph.invoke(
     {
         "messages": [HumanMessage(content=q1)],
         "user_id": "user_carolina"
@@ -321,4 +321,4 @@ response1 = act2_graph.invoke(
     store=semantic_store
 )
 print(f"Carolina: {q1}")
-print(f"Wellness Agent: {response1['messages'][-1].content}")
+print(f"Wellness Agent: {response2['messages'][-1].content}")
