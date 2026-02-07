@@ -4,3 +4,9 @@ content/
 .claude/
 .ipynb_checkpoints/
 .idea/
+__pycache__/
+*.pyc
+.langgraph_api/
+.venv
+uv.lock
+workspace
