@@ -31,7 +31,7 @@ The more relevant the retrieved context, the more accurate the generation — th
 
 ### Chunking → Retrieval → Ranking: The Fine Lines
 
-A key insight from this session is that the boundaries between chunking, retrieval, and ranking are blurry. Both chunking and the retrieval process affect the context that gets returned to the LLM. **Metadata** plays a critical role in bridging these stages — it tells us where to look, which haystack a chunk came from, and helps the LLM reason through which chunks to pick.
+A key insight from this module is that the boundaries between chunking, retrieval, and ranking are blurry. Both chunking and the retrieval process affect the context that gets returned to the LLM. **Metadata** plays a critical role in bridging these stages — it tells us where to look, which haystack a chunk comes from, and helps the LLM reason through which chunks to pick.
 
 > "Both chunking and the retrieval process both affect the context we return. Metadata is a key thing that we want to be leveraging to optimize what we put in context." — Dr. Greg
 
@@ -51,7 +51,7 @@ Chunks are created when natural language (text) from our source documents gets s
 
 The [recursive character text splitter](https://python.langchain.com/docs/how_to/recursive_text_splitter/) has become the de facto standard for building RAG systems. The underlying hypothesis is that **text that is close together in a document tends to be semantically related** — sentences, paragraphs, and chapters provide natural chunks of context.
 
-The recursive character text splitter is smarter than fixed-size chunking because it splits hierarchically: it first tries to split on double newlines, then single newlines, then spaces, and only as a last resort would it split within a word. This keeps natural text boundaries intact while targeting a specified chunk size.
+The recursive character text splitter is smarter than fixed-size chunking because it splits hierarchically: it first tries to split on double newlines, then single newlines, then spaces, and only as a last resort does it split within a word. This keeps natural text boundaries intact while targeting a specified chunk size.
 
 **Fixed-size chunking**, by contrast, counts a fixed number of characters and splits regardless of whether it lands in the middle of a word — quite too naive for most applications.
 
@@ -75,7 +75,7 @@ The result is variable-sized chunks that respect the actual semantic structure o
 
 # 🧰 **Retrieval Methods for Your Toolkit**
 
-The session introduced several retrieval methods, progressing from the simplest to the most sophisticated. In the notebook, each method is implemented by **swapping out the retriever** while keeping the rest of the LCEL chain the same — that's the key pattern.
+The session introduces several retrieval methods, progressing from the simplest to the most sophisticated. In the notebook, each method is implemented by **swapping out the retriever** while keeping the rest of the LCEL chain the same — that's the key pattern.
 
 ### 1. Naive Retrieval
 The simplest form of retrieval: embed the query, search for similar chunks via cosine similarity, and return the Top K chunks. Easy to set up but can return less relevant or redundant content. This is the baseline that everything else is measured against.
@@ -88,13 +88,13 @@ The simplest form of retrieval: embed the query, search for similar chunks via c
 > "Before adding LLMs and vector retrieval, ask: have we even implemented keyword search yet? Do we even need LLMs yet?" — Dr. Greg
 
 ### 3. Parent Document Retrieval
-Instead of returning the small chunks directly, this method returns the **larger parent document** (or section) from which the chunk originated. The approach:
+Instead of returning the small chunks directly, this method returns the **larger parent document** (or section) from which the chunk originates. The approach:
 
 - Create **two sets of chunks**: small (child) chunks for searching and large (parent) chunks for returning
 - Track **metadata** linking each child chunk to its parent
 - **Search** on the small chunks (for precision), but **return** the parent chunks (for broader context)
 
-This solves the "pile of PDFs" problem — when you retrieve a chunk, you know exactly which document, which page, and which section it came from. It's especially useful when information related to a concept isn't labeled with that concept's name (e.g., searching for "Bernoulli equation" when the equation itself doesn't contain the word "Bernoulli").
+This solves the "pile of PDFs" problem — when you retrieve a chunk, you know exactly which document, which page, and which section it comes from. It's especially useful when information related to a concept isn't labeled with that concept's name (e.g., searching for "Bernoulli equation" when the equation itself doesn't contain the word "Bernoulli").
 
 **Implementation:** Build two vector stores — one in your vector DB (e.g., Qdrant) for the child chunks, and one in memory for the parent chunks.
 
@@ -106,7 +106,7 @@ This retriever takes the original user query and uses an LLM to generate **n dif
 ### 5. Ensemble Retrieval (Hybrid Search)
 Combines multiple retrievers and merges their results using [**Reciprocal Rank Fusion (RRF)**](https://plg.uwaterloo.ca/~gvcormac/cormacksigir09-rrf.pdf). The key idea: if a document appears highly ranked across multiple different retrieval methods, it is probably more relevant.
 
-RRF merges ranked lists from different retrievers regardless of how they were scored — it only cares about relative rank, not the score values. Weights can be assigned to each retriever to control their influence.
+RRF merges ranked lists from different retrievers regardless of how they are scored — it only cares about relative rank, not the score values. Weights can be assigned to each retriever to control their influence.
 
 **This is often the best approach in practice.** Combining keyword search (BM25) with vector retrieval (semantic) gives the best of both worlds. Ensembles are consistently the answer in ML, and retrieval is no different.
 
