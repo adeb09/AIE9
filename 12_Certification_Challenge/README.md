@@ -3,10 +3,10 @@
      height="auto"/>
 </p>
 
-## <h1 align="center" id="heading">Session 12: Industry Use Cases</h1>
+## <h1 align="center" id="heading">Session 12: Certification Challenge</h1>
 | 📰 Session Sheet | ⏺️ Recording     | 🖼️ Slides        | 👨‍💻 Repo         | 📝 Homework      | 📁 Feedback       |
 |:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
-| [Indusry Use Cases](../00_Docs/Session_Sheets/12_Industry_Use_Cases) | Coming soon! | Coming soon! | You are here! | Coming soon! | Coming soon! |
+| [Industry Use Cases](https://github.com/AI-Maker-Space/AIE9/tree/main/00_Docs/Session_Sheets/12_Industry_Use_Cases) |[Recording!](https://us02web.zoom.us/rec/share/SBatPUo5ZEFKDBhjl1tNo4LxgkZJU9SUHCcPQZZY-MPSw5SA-DT78c_RLIglQD8.84JOZk6uq0hNt4Ov) <br> passcode: `G9?vCPR!`| [Session 12 Slides](https://www.canva.com/design/DAG-EPmlD1w/8U1cQ_UuwRej5uZNxaI1ZQ/edit?utm_content=DAG-EPmlD1w&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) | You are here! | [Certification Challenge](https://forms.gle/yxvhpXiaMDUJ28Gv5) | [Feedback 2/19](https://forms.gle/jKhV6qgksdvgFhWw5) |
 
 # Requirements for Certification Challenge Submissions
 
@@ -173,7 +173,7 @@ Choose one, and articulate it.
 
 1. Choose an advanced retrieval technique that you believe will improve your application’s ability to retrieve the most appropriate context.  Write 1-2 sentences on why you believe it will be useful for your use case.
 2. Implement the advanced retrieval technique on your application.
-3. How does the performance compare to your original RAG application?  Test the fine-tuned embedding model using the RAGAS frameworks to quantify any improvements.  Provide results in a table.
+3. How does the performance compare to your original RAG application? Test the new retrieval pipeline using the RAGAS frameworks to quantify any improvements. Provide results in a table.
 
 ### Task 7: Next Steps
 
