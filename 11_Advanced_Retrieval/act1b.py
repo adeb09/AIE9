@@ -1,4 +1,4 @@
-from typing import List, TypedDict, Dict, Callable
+from typing import List, TypedDict, Dict, Callable, Any
 import pickle
 import time
 from copy import deepcopy
@@ -44,7 +44,7 @@ load_dotenv()
 
 HEALTH_AND_WELLNESS_GUIDE_PATH = "data/HealthWellnessGuide.txt"
 GOLDEN_DATA_SET_FILE = "golden_data_set.pkl"
-TEST_SET_SIZE = 5
+TEST_SET_SIZE = 15
 CHUNK_SIZE = 500
 CHUNK_OVERLAP = 50
 PARENT_CHUNK_SIZE = 2000
@@ -221,7 +221,7 @@ def retriever_factory(retriever: RetrieverLike):
         return {"context": retrieved_docs}
     return retrieve_node
 
-def build_rag_graph(retriever: Dict[str, List[Document]]):
+def build_rag_graph(retriever: Callable[[State], Dict[str, Any]]):
     rag_graph_builder = StateGraph(State).add_sequence([retriever, generate])
     rag_graph_builder.add_edge(START, "retrieve_node")  # node name from retriever_factory's __name__
     rag_graph = rag_graph_builder.compile()
@@ -263,7 +263,7 @@ def run_experiment_loop(golden_data_set: Testset, retriever_mapping: Dict[str, C
         tested_data_set = invoke_test_queries(rag_graph, deepcopy(golden_data_set))
         rag_stats = gather_rag_statistics(tested_data_set, evaluator_llm)
         # EvaluationResult.scores is a list of per-row dicts; aggregate to mean per metric for this run
-        scores_dict = pd.DataFrame(rag_stats.scores).mean(numeric_only=True).to_dict()
+        scores_dict = pd.DataFrame(rag_stats.scores).mean(numeric_only=True, skipna=True).to_dict()
         rag_metrics.append({'retriever': retriever_str, 'chunking_strategy': f'{chunk_strategy}', **scores_dict})
         logger.warning(f"Done with experiment loop: retriever: {retriever_str}, retriever_func: {retriever_func.__name__}, "
                        f"chunk_strategy: {chunk_strategy}")
@@ -282,27 +282,27 @@ def run_experiment(document_sources: List[str]):
     naive_retriever = get_naive_retriever(vector_store=vector_store)
     non_semantic_params = {
         "vector_store": vector_store,                       # get_naive_retriever
-        "docs": wellness_docs,                              # get_bm25_retriever
-        "base_retriever": naive_retriever,                  # get_cohere_reranker
+        # "docs": wellness_docs,                              # get_bm25_retriever
+        # "base_retriever": naive_retriever,                  # get_cohere_reranker
         "retriever": naive_retriever,                       # get_multiquery_retriever
         "llm": ChatOpenAI(model="gpt-4.1-nano"),            # get_multiquery_retriever
-        "parent_chunk_size": PARENT_CHUNK_SIZE,             # get_parent_document_retriever
-        "parent_chunk_overlap": PARENT_CHUNK_OVERLAP,       # get_parent_document_retriever
-        "child_chunk_size": CHILD_CHUNK_SIZE,               # get_parent_document_retriever
-        "child_chunk_overlap": CHILD_CHUNK_OVERLAP,         # get_parent_document_retriever
-        "qdrant_client": vector_db_client,                  # get_parent_document_retriever
-        "collection_name": "wellness_guide",                # get_parent_document_retriever
-        "documents": raw_corpus,                            # get_parent_document_retriever
+        # "parent_chunk_size": PARENT_CHUNK_SIZE,             # get_parent_document_retriever
+        # "parent_chunk_overlap": PARENT_CHUNK_OVERLAP,       # get_parent_document_retriever
+        # "child_chunk_size": CHILD_CHUNK_SIZE,               # get_parent_document_retriever
+        # "child_chunk_overlap": CHILD_CHUNK_OVERLAP,         # get_parent_document_retriever
+        # "qdrant_client": vector_db_client,                  # get_parent_document_retriever
+        # "collection_name": "wellness_guide",                # get_parent_document_retriever
+        # "documents": raw_corpus,                            # get_parent_document_retriever
         "retrievers": [],                                   # get_ensemble_retriever
     }
 
     retriever_mapping = {
         "naive": get_naive_retriever,
-        "bm25": get_bm25_retriever,
-        "reranker": get_cohere_reranker,
+        # "bm25": get_bm25_retriever,
+        # "reranker": get_cohere_reranker,
         "multiquery": get_multiquery_retriever,
-        "parent_document": get_parent_document_retriever,
-        "ensemble": get_ensemble_retriever,
+        # "parent_document": get_parent_document_retriever,
+        # "ensemble": get_ensemble_retriever,
     }
 
     evaluator_llm = LangchainLLMWrapper(ChatOpenAI(model="gpt-4.1-mini"))
@@ -318,22 +318,31 @@ def run_experiment(document_sources: List[str]):
     naive_semantic_retriever = get_naive_retriever(semantic_vector_store)
     semantic_params = {
         "vector_store": semantic_vector_store,              # get_naive_retriever
-        "docs": semantic_wellness_docs,                     # get_bm25_retriever
-        "base_retriever": naive_semantic_retriever,         # get_cohere_reranker
-        "retriever": naive_semantic_retriever,              # get_multiquery_retriever
-        "llm": ChatOpenAI(model="gpt-4.1-nano"),            # get_multiquery_retriever
-        "parent_chunk_size": PARENT_CHUNK_SIZE,             # get_parent_document_retriever
-        "parent_chunk_overlap": PARENT_CHUNK_OVERLAP,       # get_parent_document_retriever
-        "child_chunk_size": CHILD_CHUNK_SIZE,               # get_parent_document_retriever
-        "child_chunk_overlap": CHILD_CHUNK_OVERLAP,         # get_parent_document_retriever
-        "qdrant_client": vector_db_client,                  # get_parent_document_retriever
-        "collection_name": "semantic_wellness_guide",       # get_parent_document_retriever
-        "documents": semantic_wellness_docs,                # get_parent_document_retriever
+        # "docs": semantic_wellness_docs,                     # get_bm25_retriever
+        # "base_retriever": naive_semantic_retriever,         # get_cohere_reranker
+        # "retriever": naive_semantic_retriever,              # get_multiquery_retriever
+        # "llm": ChatOpenAI(model="gpt-4.1-nano"),            # get_multiquery_retriever
+        # "parent_chunk_size": PARENT_CHUNK_SIZE,             # get_parent_document_retriever
+        # "parent_chunk_overlap": PARENT_CHUNK_OVERLAP,       # get_parent_document_retriever
+        # "child_chunk_size": CHILD_CHUNK_SIZE,               # get_parent_document_retriever
+        # "child_chunk_overlap": CHILD_CHUNK_OVERLAP,         # get_parent_document_retriever
+        # "qdrant_client": vector_db_client,                  # get_parent_document_retriever
+        # "collection_name": "semantic_wellness_guide",       # get_parent_document_retriever
+        # "documents": semantic_wellness_docs,                # get_parent_document_retriever
         "retrievers": [],                                   # get_ensemble_retriever
     }
 
+    semantic_mapping = {
+        "naive": get_naive_retriever,
+        # "bm25": get_bm25_retriever,
+        # "reranker": get_cohere_reranker,
+        # "multiquery": get_multiquery_retriever,
+        # "parent_document": get_parent_document_retriever,
+        # "ensemble": get_ensemble_retriever,
+    }
+
     semantic_rag_metrics = run_experiment_loop(
-        golden_data_set, retriever_mapping, semantic_params, evaluator_llm, "semantic_chunking")
+        golden_data_set, semantic_mapping, semantic_params, evaluator_llm, "semantic_chunking")
 
     # turn metrics into a dataframe for easier analysis and plotting
     metrics_df = pd.DataFrame(non_semantic_rag_metrics + semantic_rag_metrics)

@@ -17,4 +17,6 @@ dependencies = [
     "langchain-qdrant>=0.2.0",
     "ragas==0.2.10",
     "rapidfuzz>=3.14.3",
+    "nltk>=3.9.2",
+    "langgraph>=0.2.69",
 ]
