@@ -11,12 +11,12 @@
 - [LangChain MCP Adapters](https://github.com/langchain-ai/langchain-mcp-adapters)
 
 ## 📛 Required Tooling & Account Setup
-- A GitHub account (free tier is fine) with a Personal Access Token (fine-grained, repo scope)
-- An X (Twitter) Developer account with a Bearer Token recommended to load $5 in credits.
+- A GitHub account (free tier is fine) with a Personal Access Token (fine-grained with repository permissions: `Contents` Read/Write, `Pull requests` Read/Write, and `Metadata` Read)
+- An X (Twitter) Developer account with a Bearer Token and access to `GET /2/tweets/search/recent` (your plan tier must include recent search access).
    
 ## 📜 Recommended Reading
-- [MCP Announcement](https://www.anthropic.com/news/model-context-protocol) (Nov 2025)
-- [About MCP](https://modelcontextprotocol.io/about) (from the spec)
+- [MCP Announcement](https://www.anthropic.com/news/model-context-protocol) (Nov 2024)
+- [About MCP](https://modelcontextprotocol.io/docs/getting-started/intro) (from the spec)
 - [MCP](https://docs.langchain.com/oss/python/langchain/mcp), by LangChain
 
 # 🗺️ Overview
@@ -91,9 +91,9 @@ The S stands for security.
 
 Of course, there’s no S.
 
-As [Palo Alo Networks explains](https://www.paloaltonetworks.com/blog/cloud-security/model-context-protocol-mcp-a-security-overview/?utm_source=chatgpt.com), there are several risks that are immediately evident: prompt injection, credentials exposure, and unverified third-party tools.
+As [Palo Alto Networks explains](https://www.paloaltonetworks.com/blog/cloud-security/model-context-protocol-mcp-a-security-overview/?utm_source=chatgpt.com), there are several risks that are immediately evident: prompt injection, credentials exposure, and unverified third-party tools.
 
-Correspondingly, a few best-practices exist, including great logging, org-specific governance procedures for your companies use of MCP servers, and ensuring that API keys stay hidden.
+Correspondingly, a few best-practices exist, including great logging, org-specific governance procedures for your company's use of MCP servers, and ensuring that API keys stay hidden.
 
 There is, of course, a ton of security work to be done in a world run by agents.
 
