@@ -10,4 +10,5 @@ __pycache__/
 .venv
 uv.lock
 workspace
-.virtual_documents
+*.virtual_documents
+*.egg-info/
