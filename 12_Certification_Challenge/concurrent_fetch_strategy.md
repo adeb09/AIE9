@@ -104,6 +104,50 @@ small compared to the time saved by running all doc fetches concurrently
 
 ---
 
+## GitHub API Rate Limits
+
+Understanding rate limits is critical when making many concurrent requests.
+
+### REST API (what this code uses)
+
+- **5,000 requests per hour** for authenticated requests (personal access token
+  via `GITHUB_TOKEN`)
+- The limit resets on a **rolling 1-hour window**, not at a fixed clock time
+- Remaining requests and the reset timestamp are available after any request:
+
+```python
+print(gh.rate_limit.remaining)       # requests left
+print(gh.rate_limit.reset_datetime)  # when the window resets
+```
+
+### GitHub Apps get more headroom
+
+If using a GitHub App installation token instead of a personal access token,
+the limit scales with the number of repositories the app is installed on — up
+to **15,000 requests per hour**.
+
+### GraphQL has a separate budget
+
+The GraphQL API (v4) uses a **points-based system** rather than a flat request
+count. Simple queries cost 1 point; queries returning many nodes cost more. The
+budget is 5,000 points per hour, but a heavily nested query can cost
+significantly more than 1 point.
+
+### Search API is separately capped
+
+The `/search` endpoints have their own lower limit of **30 requests per minute**
+(authenticated), completely independent of the 5,000/hour pool.
+
+### Secondary rate limits
+
+Beyond the hourly quota, GitHub enforces secondary limits on the number of
+**concurrent requests and requests per second**. Hammering the API with hundreds
+of simultaneous requests — exactly what `asyncio.gather` does — can trigger
+these. In practice this is rarely hit at the scale of a personal starred list,
+but worth knowing if you scale this up significantly.
+
+---
+
 ## Recommendation
 
 Use **Strategy A** unless you are working with a user who has thousands of
