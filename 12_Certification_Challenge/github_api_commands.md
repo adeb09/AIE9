@@ -168,3 +168,37 @@ The API returns JSON with repository information including:
 - `stargazers_count` - number of stars
 - `language` - primary language
 - `updated_at` - last update time
+
+## Getting the Starred Date
+
+By default, the `/user/starred` endpoint returns plain repo objects without starring metadata. To include the date you starred each repository, use the `application/vnd.github.star+json` media type:
+
+```bash
+curl -H "Accept: application/vnd.github.star+json" \
+     -H "Authorization: Bearer $GITHUB_TOKEN" \
+     "https://api.github.com/user/starred?per_page=100&page=1"
+```
+
+This changes the response format to wrap each result with a `starred_at` timestamp alongside the `repo` object:
+
+```json
+{
+  "starred_at": "2023-11-15T14:32:00Z",
+  "repo": {
+    "id": 123456,
+    "name": "some-repo",
+    ...
+  }
+}
+```
+
+### Extract Repo Names with Starred Dates
+
+```bash
+curl -s -H "Accept: application/vnd.github.star+json" \
+     -H "Authorization: Bearer $GITHUB_TOKEN" \
+     "https://api.github.com/user/starred?per_page=100" | \
+  jq -r '.[] | "\(.starred_at) \(.repo.full_name)"'
+```
+
+> **Note:** The `starred_at` field is **only returned** when using the `application/vnd.github.star+json` Accept header. Without it, the response is a plain array of repo objects with no starring metadata.
