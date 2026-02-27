@@ -211,3 +211,82 @@ print(f"Fetching docs for {total} starred repos...")
 ```
 
 This is the cleanest solution — one request, exact count, no header parsing.
+
+---
+
+## Handling 502 Bad Gateway Errors
+
+When running with high concurrency, you may see warnings like:
+
+```
+Warning: unexpected error fetching README for owner/repo: Bad Gateway
+```
+
+A **502 Bad Gateway** means GitHub's servers returned an error before even
+processing the request — it is not a problem with your code or the specific
+repository. GitHub's load balancers occasionally fail to route individual
+requests to their backend during a burst of concurrent traffic, returning 502
+instead of queuing them. Sequential requests rarely trigger this; the gap
+between requests gives the infrastructure time to recover.
+
+This is the secondary rate limit (mentioned above) manifesting as a gateway
+error rather than a clean 429 Too Many Requests.
+
+---
+
+## Fixing 502s: Semaphore + Retry Logic
+
+Both mitigations are worth adding, and they solve slightly different problems.
+
+### Step 1: Add a Semaphore (addresses the root cause)
+
+A semaphore caps how many requests are in-flight simultaneously. Instead of
+firing all 500 coroutines at once, you allow at most N to run concurrently.
+This smooths the burst out and typically eliminates 502s entirely.
+
+A good starting value is **20 concurrent requests** — still vastly faster than
+sequential fetching, but not overwhelming to GitHub's infrastructure.
+
+```python
+semaphore = asyncio.Semaphore(20)
+
+async def fetch_repo_docs_throttled(repo):
+    async with semaphore:
+        return await fetch_repo_docs(repo)
+
+results = await asyncio.gather(
+    *[fetch_repo_docs_throttled(repo) for repo in starred_repos]
+)
+```
+
+The semaphore is "free" on the happy path — it adds no latency when a slot is
+available, and costs no extra API calls.
+
+### Step 2: Add Retry Logic with Exponential Backoff (safety net)
+
+Even with a semaphore, transient errors can slip through. Retry with
+exponential backoff handles them gracefully rather than silently dropping repos
+from results:
+
+- Attempt 1 fails with 502 → wait 1 second, retry
+- Attempt 2 fails with 502 → wait 2 seconds, retry
+- Attempt 3 fails with 502 → wait 4 seconds, retry
+- ...up to a maximum retry count, then give up
+
+The critical distinction is **which errors are worth retrying**:
+
+| Status | Meaning | Retry? |
+|--------|---------|--------|
+| 502, 503, 504 | Gateway / server error | Yes — transient |
+| 429 | Rate limited | Yes — after `Retry-After` header duration |
+| 404 | Not found | No — permanent |
+| 401, 403 | Auth / permission error | No — retrying won't help |
+
+### Recommended Order of Implementation
+
+1. Add the semaphore (limit ~20) — this alone will likely eliminate 502s
+2. Run again and observe whether any errors persist
+3. If transient errors remain, add retry logic on top
+
+This avoids over-engineering upfront. The semaphore alone is often sufficient,
+and one test run will tell you whether retry logic is actually needed.
