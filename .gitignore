@@ -12,3 +12,4 @@ uv.lock
 workspace
 *.virtual_documents
 *.egg-info/
+*.pkl
