@@ -123,4 +123,3 @@ if __name__ == "__main__":
     print("Test 2: Check specific well-known repositories")
     print("="*70)
     asyncio.run(test_specific_repos())
-```
