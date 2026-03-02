@@ -107,4 +107,34 @@ All three support **full-text + vector**; hybrid = keyword + semantic together.
 
 ---
 
+## 4. Qdrant Running Locally (No Server, One Directory)
+
+Qdrant can run **locally on your machine** without a separate server process. It uses **embedded/local** mode in the Python client.
+
+- **No separate Qdrant server** — everything runs inside your Python process.
+- **Persistence:** You pass a **directory path** (not a single file). Data is stored under that directory (e.g. `storage.sqlite` and metadata like `meta.json`).
+
+```python
+from qdrant_client import QdrantClient
+
+# Persistent: one directory on disk (not a single .db file)
+client = QdrantClient(path="./qdrant_data")
+
+# Or in-memory only (no persistence)
+client = QdrantClient(location=":memory:")
+```
+
+### One file vs one directory
+
+| Aspect | SQLite (e.g. sqlite-vec) | Qdrant local |
+|--------|---------------------------|--------------|
+| **Runs locally?** | Yes | Yes |
+| **Separate server?** | No | No |
+| **Persistence** | Single `.db` file | One **directory** (e.g. `./qdrant_data`) |
+| **Inside that directory** | N/A | `storage.sqlite` (and metadata like `meta.json`) |
+
+So Qdrant is **a bit more than “1 file”**: it’s one **folder** with SQLite-backed storage and metadata inside. Still fully local, no network, no extra process.
+
+---
+
 *Generated from research and discussion on vector stores and hybrid search for the 12 Certification Challenge.*
