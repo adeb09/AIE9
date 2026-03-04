@@ -5,7 +5,8 @@
 
 | 📰 Session Sheet                                             | ⏺️ Recording                           | 🖼️ Slides                                  | 👨‍💻 Repo    | 📝 Homework                                      | 📁 Feedback                                          |
 | ------------------------------------------------------------ | -------------------------------------- | ------------------------------------------- | ------------- | ------------------------------------------------ | ---------------------------------------------------- |
-| [Session 14: MCP Connectors](https://www.notion.so/) | [Recording!](https://us02web.zoom.us/) | [Session 14 Slides](https://www.canva.com/) | You are here! | [Session 14 Assignment: MCP Connectors](https://forms.gle/) | [AIE9 Feedback](https://forms.gle/ty3AoLmWqBqg99rn8) |
+| [MCP Connectors](../00_Docs/Session_Sheets/14_MCP_Connectors) |[Recording!](https://us02web.zoom.us/rec/share/s9Cu44bGFiDaGZImyXfBgu7QM0VEFJaCuUF73p0p5878HlkYeHuZX6PTOCtoBAmF.nc6-njf7sNkdQOkR) <br> passcode: `2W$Rrs5=`| [Session 14 Slides](https://www.canva.com/design/DAG-EM1Hsh8/Z3bEjI4cgFHEpIIJrHg3fg/edit?utm_content=DAG-EM1Hsh8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) | You are here! | [Session 14 Assignment: MCP Connectors](https://forms.gle/dGecHpHLkF9Ctkz57) | [Feedback 2/26](https://forms.gle/zsm3T7gvKJewCJRK7) |
+
 
 
 ### Prerequisites
