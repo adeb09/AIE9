@@ -69,7 +69,12 @@ Have fun!
 What is the key architectural difference between the `simple_agent` and `agent_with_helpfulness` graphs? Specifically, explain how the helpfulness evaluation loop works and what mechanisms are in place to prevent it from running indefinitely.
 
 ##### Answer:
-
+- the `simple_agent` has 1 agentic loop that makes a tool call if the LLM requests it (tools include Tavily Search, a tool that searches arxiv, and a RAG tool to retrieve feline health); this loop continues until there are no more tool calls remaining 
+- the `agent_with_helpfulness` has 2 loops
+  - the first loop is similar to the `simple_agent` loop where the LLM can request tool calls (same tools as the `simple_agent`); this loop continues until there are no more tool calls left
+  - the last loop is regarding helpfulness of the model output
+    - the next loop asks a higher level GPT model whether the output given by the LLM is helpful or not; if it is, this ends the loop; otherwise, the original LLM/agent gets another attempt to respond to the user query (with the full conversation history as context)
+    - this loop continues until the helpfulness of the response is Y or the max iteration limit is hit (which is a messages length of 10)
 
 
 #### Question 2:
