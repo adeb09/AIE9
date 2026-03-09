@@ -94,7 +94,8 @@ What is the role of `langgraph.json` in the LangGraph Deployments? Describe each
 Create your own agent graph! Build a new graph in `app/graphs/` with a custom evaluation node (e.g., a vibe checker, a fact verifier, a summarizer — get creative!). Register it in `langgraph.json`, serve it with `uv run langgraph dev`
 
 ##### Answer:
-
+- I created a `Simple Summary Agent` which summarizes the tool calls made in the agentic loop and appends it to the top of the response from the agent so the user can see a quick summary of all the tool calls that were made
+- see `graphs/simple_summary_agent.py` and [Loom video](https://www.loom.com/share/f902bc95f6d440ee91f0a11b09d862d2) for more details and a walkthrough
 
 
 # Ship 🚢
