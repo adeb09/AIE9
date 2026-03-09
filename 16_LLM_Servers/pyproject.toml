@@ -1,0 +1,26 @@
+[project]
+name = "16-llm-servers"
+version = "0.1.0"
+description = "LLM Servers with Fireworks AI"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "jupyter>=1.1.1",
+    "openai>=1.100.2",
+    "fireworks-ai",
+    "langchain-fireworks>=0.2.0",
+    "langchain-openai>=0.3.0",
+    "langchain-tavily>=0.1.0",
+    "langgraph>=1.0.10",
+    "langchain-core>=1.2.16",
+    "langchain-community>=0.4.1",
+    "langchain-text-splitters>=1.1.1",
+    "langchain-qdrant>=1.1.0",
+    "qdrant-client>=1.17.0",
+    "arxiv>=2.1.0",
+    "pymupdf>=1.27.1",
+    "tiktoken>=0.12.0",
+    "python-dotenv>=1.2.2",
+    "langgraph-cli>=0.4.14",
+    "langgraph-api>=0.4.28",
+]
