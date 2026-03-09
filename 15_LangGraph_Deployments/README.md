@@ -82,12 +82,12 @@ What is the role of `langgraph.json` in the LangGraph Deployments? Describe each
 
 ##### Answer:
 - `langraph.json` is a configuration file for LangGraph deployments
-- `version` is the schema version for your config format
-- `dependencies` points to a location in your repo with your package dependencies (in this case the `pyproject.toml` in the current directory)
-- `env` is the path to the .env file that holds environment variables for your app/deployment
-- `python_version` specifies the version of Python your app will run
-- `graphs` is a registry mapping the graph IDs to their Python import location in the project
-- `assistants` defines describes each agent defined in the graphs you are building in the app (`graph_id` is the graph the agent uses and `name/description` are the human-readable labels surfaced on the LangGraph UI)
+  - `version` is the schema version for your config format
+  - `dependencies` points to a location in your repo with your package dependencies (in this case the `pyproject.toml` in the current directory)
+  - `env` is the path to the .env file that holds environment variables for your app/deployment
+  - `python_version` specifies the version of Python your app will run
+  - `graphs` is a registry mapping the graph IDs to their Python import location in the project
+  - `assistants` defines describes each agent defined in the graphs you are building in the app (`graph_id` is the graph the agent uses and `name/description` are the human-readable labels surfaced on the LangGraph UI)
 
 
 #### Activity #1:
