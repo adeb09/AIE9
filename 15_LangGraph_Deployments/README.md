@@ -95,7 +95,7 @@ Create your own agent graph! Build a new graph in `app/graphs/` with a custom ev
 
 ##### Answer:
 - I created a `Simple Summary Agent` which summarizes the tool calls made in the agentic loop and appends it to the top of the response from the agent so the user can see a quick summary of all the tool calls that were made
-- see `graphs/simple_summary_agent.py` and [Loom video](https://www.loom.com/share/f902bc95f6d440ee91f0a11b09d862d2) for more details and a walkthrough
+- see `/app/graphs/simple_summary_agent.py` and [Loom video](https://www.loom.com/share/f902bc95f6d440ee91f0a11b09d862d2) for more details and a walkthrough
 
 
 # Ship 🚢
