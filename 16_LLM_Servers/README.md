@@ -83,7 +83,11 @@ What is the difference between serverless and dedicated endpoints?
 
 #### ✅ Answer:
 
-_(insert your answer here)_
+- serverless endpoints are usually shared infrastructure that has a different payment model (usually based on the amount of tokens used instead of time that the endpoint is up)
+  - usually serverless endpoints may have more limits on concurrency/and usage limits compared to dedicated endpoints
+- dedicated endpoints are usually infrastructure that is just hosting your specific endpoint and its completely dedicated to your workload
+  - the pricing model for a dedicated endpoint will usually be based on how long the endpoint is up and running
+  - usually you can pick the specific hardware you want
 
 ### ❓ Question #2:
 
@@ -91,7 +95,15 @@ Why is it important to consider token throughput and latency when choosing an LL
 
 #### ✅ Answer:
 
-_(insert your answer here)_
+- **Latency** directly affects the user experience of your app
+  - if a model takes several seconds to return the first token, users perceive the application as slow or unresponsive, leading to frustration and drop-off
+  - for real-time or conversational interfaces, low time-to-first-token (TTFT) is a critical metric
+- **Token throughput** (tokens per second) determines how quickly a complete response is delivered
+  - a slow generation rate means users wait a long time for longer responses
+- Together, these metrics set a practical ceiling on how many concurrent users you can serve
+- **Low throughput** means each request ties up infrastructure longer, reducing the number of simultaneous users you can handle without degrading quality.
+- Cost is also tied to throughput — a higher-throughput model can serve more requests per unit time on the same hardware, which directly lowers cost per query at scale.
+- you need to balance quality with responsiveness: a highly capable model that is too slow or has low throughput may actually deliver a worse product experience than a slightly less capable but faster model.
 
 ## Activity 1: RAGAS Evaluation with Cost Analysis
 
