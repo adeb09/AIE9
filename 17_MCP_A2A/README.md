@@ -5,10 +5,6 @@
 
 ## <h1 align="center" id="heading">Session 17: Model Context Protocol (MCP) & Agent-to-Agent (A2A) Protocol</h1>
 
-| 📰 Session Sheet                                             | ⏺️ Recording                           | 🖼️ Slides                                   | 👨‍💻 Repo       | 📝 Homework                                                         | 📁 Feedback                        |
-| ------------------------------------------------------------ | -------------------------------------- | ------------------------------------------- | ------------- | ------------------------------------------------------------------- | ---------------------------------- |
-| [Session 17: Model Context Protocol](https://www.notion.so/) | [Recording!](https://us02web.zoom.us/) | [Session 17 Slides](https://www.canva.com/) | You are here! | [Session 17 Assignment: Model Context Protocol](https://forms.gle/) | [AIE9 Feedback](https://forms.gle) |
-
 ---
 
 ## 📚 Useful Resources
