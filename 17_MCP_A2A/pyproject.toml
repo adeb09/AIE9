@@ -1,0 +1,16 @@
+[project]
+name = "17-mcp"
+version = "0.1.0"
+description = "Session 17: MCP & A2A Protocol"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "aiosqlite>=0.22.1",
+    "mcp[cli]>=1.26.0",
+    "a2a-sdk>=0.2.7",
+    "uvicorn>=0.34.0",
+    "langchain>=1.2.10",
+    "langchain-openai>=1.1.10",
+    "dotenv>=0.9.9",
+    "ipykernel>=7.2.0",
+]
