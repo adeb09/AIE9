@@ -101,7 +101,9 @@ We can break this down into a few components:
 
 The first practical thing that we need to understand about guardrails is that they are typically *other LLMs*. We can put them on the input or the output side of our applications as pictured below:
 
-![Event_Guardrails.jpg](attachment:33f0089d-55df-450c-8142-4751e61f0d03:Event_Guardrails.jpg)
+<p align="center">
+  <img src="Event_Guardrails.jpg" width="80%" />
+</p>
 
 We might use input or output guards for different things, for instance:
 
@@ -110,7 +112,10 @@ We might use input or output guards for different things, for instance:
 
 This is visualized well in Guardrails AI documention [[Ref](https://github.com/guardrails-ai/guardrails?tab=readme-ov-file)]. We can see that we can about different things on either side!
 
-![image.png](attachment:ca113505-42bf-480e-8c4d-1071031dbe3e:image.png)
+<p align="center">
+  <img src="image.png" width="80%" />
+</p>
+
 
 ## **Design patterns**
 
