@@ -1,4 +1,4 @@
-# Session #: [emoji] Session Name
+# Session 18: 🛤️ Guardrails & Caching 
 
 🎯 **Goal**: Learn a few upgrades: for performance and security/trustworthiness.
 
