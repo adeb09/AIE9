@@ -5,10 +5,9 @@
 
 ## <h1 align="center" id="heading">Session 17: Model Context Protocol (MCP) & Agent-to-Agent (A2A) Protocol</h1>
 
-| 📰 Session Sheet                                             | ⏺️ Recording                           | 🖼️ Slides                                   | 👨‍💻 Repo       | 📝 Homework                                                         | 📁 Feedback                        |
-| ------------------------------------------------------------ | -------------------------------------- | ------------------------------------------- | ------------- | ------------------------------------------------------------------- | ---------------------------------- |
-| [Session 17: Model Context Protocol](https://www.notion.so/) | [Recording!](https://us02web.zoom.us/) | [Session 17 Slides](https://www.canva.com/) | You are here! | [Session 17 Assignment: Model Context Protocol](https://forms.gle/) | [AIE9 Feedback](https://forms.gle) |
-
+| Session Sheet | Recording     | Slides        | Repo         | Homework      | Feedback       |
+|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
+| [MCP Servers & A2A](../00_Docs/Session_Sheets/17_MCP_Servers_and_A2A) |[Recording!](https://us02web.zoom.us/rec/share/_iJT-kZiYacyz23fjU3N7w7mZIUFJqGXV48RDqCkCY3avsmngKtzK0SNs0I7k74.xICq6NSv6l6GqAFU) <br> passcode: `fJ9tx4h.`| [Session 17 Slides](https://www.canva.com/design/DAG-ELapG4g/6vDMm63RBwKVsSZvheorVA/edit?utm_content=DAG-ELapG4g&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) | You are here! | [(Optional) Session 17 Assignment: MCP Servers & A2A](https://forms.gle/qtjQFfoEF8aykTWy5) | [Feedback 3/12](https://forms.gle/sJwD1a6LLn9NU9s48) |
 ---
 
 ## 📚 Useful Resources
