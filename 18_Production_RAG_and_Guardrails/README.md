@@ -6,6 +6,9 @@
 ## <h1 align="center" id="heading">Session 18: Production RAG and Guardrails</h1>
 
 ### [Quicklinks](https://github.com/AI-Maker-Space/AIE9/00_AIM_Quicklinks)
+| Session Sheet | Recording     | Slides        | Repo         | Homework      | Feedback       |
+|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
+| [Guardrails & Caching ](../00_Docs/Session_Sheets/18_Guardrails_and_Caching) |[Recording!]() <br> passcode: `02y.=1pO`| [Session 18 Slides](https://www.canva.com/design/DAHDxT46Nc0/RoSIQZinFVFPJuPozE2EUg/edit?utm_content=DAHDxT46Nc0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) | You are here! | [(Optional) Session 18 Assignment: Guardrails & Caching](https://forms.gle/9mHryq9ZeiEgjHTG9) | [Feedback 3/12](https://forms.gle/2TM564FuRf8yCF9H9) |
 
 # Build 🏗️
 
