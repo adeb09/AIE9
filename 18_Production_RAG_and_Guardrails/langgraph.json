@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "dependencies": ["."],
+  "env": ".env",
+  "python_version": "3.13",
+  "graphs": {
+    "simple_agent": "app.graphs.simple_agent:graph",
+    "agent_with_guardrails": "app.graphs.agent_with_guardrails:graph"
+  },
+  "assistants": {
+    "agent": {
+      "graph_id": "simple_agent",
+      "name": "Simple Agent",
+      "description": "Agent with tools using conditional tool-calling."
+    },
+    "agent_guardrails": {
+      "graph_id": "agent_with_guardrails",
+      "name": "Agent with Guardrails",
+      "description": "Agent that validates inputs and outputs with Guardrails AI safety checks."
+    }
+  }
+}
